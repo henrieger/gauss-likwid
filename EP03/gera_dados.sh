@@ -4,7 +4,7 @@
 rm -f *.dat
 
 # Procura e exporta dados nos arquivos de log do LIKWID
-for i in 10 32 50 #64 100 128 200 250 256 300 400 512 600 1000 1024 2000 2048 3000 4096
+for i in 10 32 50 64 100 128 200 250 256 300 400 512 600 1000 1024 2000 2048 3000 4096
 do
     TEMPO=$(grep 'Tempo' l3_$i.txt | cut -d' ' -f3)
     echo $i ${TEMPO[@]} >> tempo.dat
