@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Executando comandos para poder utilizar o likwid
+# Executando comandos para poder utilizar o likwid
 echo "performance" | sudo tee /sys/devices/system/cpu/cpufreq/policy3/scaling_governor
 
 #Compilando programas
@@ -8,7 +8,7 @@ make avx
 make geraSL
 clear
 
-#Rodando testes
+# Rodando testes
 for i in 10 32 50 64 100 128 200 250 256 300 400 512 600 1000 1024 2000 2048 3000 4096
 do
     echo "Processando sistema de dimensão $i"
@@ -19,15 +19,25 @@ do
     clear
 done
 
+# Gerando arquivos .dat
+echo "Gerando arquivos de dados"
+./gera_dados.sh
+clear
 
-#Encerrando
+# Limpando arquivos temporários
 make purge
 rm sistemas.txt
-#rm l3*.txt
-#rm l2*.txt
-#rm flops*.txt
+rm l3*.txt
+rm l2*.txt
+rm flops*.txt
 
-#Retornando para frequência original
+# Gerando gráficos
+echo "Gerando gráficos"
+gnuplot ./plot_dados.gp
+rm *.dat
+clear
+
+# Retornando para frequência original
 clear
 echo "Frequência do processador configurada para modo:"
 echo "powersave" | sudo tee /sys/devices/system/cpu/cpufreq/policy3/scaling_governor 
