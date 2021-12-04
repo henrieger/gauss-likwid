@@ -28,7 +28,7 @@ plot "flops_dp.dat" using 2:xticlabels(1) title "gaussJacobi DP" lc 7 lt 7 w lp 
 # Gráfico de tempo
 set output "tempo.png"
 set title "Tempo de Execução das Funções"
-set ylabel "tempo [s]"
+set ylabel "tempo [ms]"
 set logscale y
 plot "tempo.dat" using 2:xticlabels(1) title "gaussJacobi" lc 7 lt 7 w lp , \
      "tempo.dat" using 3:xticlabels(1) title "gaussJacobiOpt" lc 6 lt 7 w lp
