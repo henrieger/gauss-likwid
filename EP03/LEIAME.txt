@@ -1,0 +1,23 @@
+Autores:
+    Henrique Luiz Rieger - hlr19 - GRR20190357
+    Leon Augusto Okida Gonçalves - laog19 - GRR20190365
+
+Como gerar os gráficos:
+    Basta rodar o script ./teste.sh. O script tem a opção -C, equivalente ao likwid-perfctr,
+    que permite definir a thread do processador para rodar os testes. Por padrão, a thread sem
+    indicar uma opção ao script é 3. Mais informações sobre os dados e os gráficos podem ser
+    encontradas nos scripts auxiliares gera_dados.sh e plot_dados.gp
+
+**IMPORTANTE**: O eixo x dos gráficos NÃO ESTÁ EM ESCALA para facilitar a visualização dos dados.
+
+Sobre os testes:
+    Foram feitos usando dois processadores Intel Core (Coffeelake e Kabylake) com 4 núcleos e 8
+    threads. Os testes locais foram feitos usando a thread 7.
+
+Otimizações encontradas em gaussJacobiOpt:
+    - Alocação da matriz de coeficientes feita inline e com padding em potências de 2 para
+      otimizar acesso à cache e evitar cache thrasing.
+    - Multiplicação vetor-matriz da soma feita com loop unroll & jam de n = 4.
+    - Cálculo de x_prox feito inline para otimizar uso de registradores.
+    - Troca de ponteiros auxiliares (x_prox e x_atual) para evitar cópias de memória.
+    - Uso de memcpy para copiar resultados para vetor final.
