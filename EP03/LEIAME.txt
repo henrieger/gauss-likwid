@@ -3,7 +3,7 @@ Autores:
     Leon Augusto Okida Gonçalves - laog19 - GRR20190365
 
 Como gerar os gráficos:
-    Basta rodar o script ./teste.sh. O script tem a opção -C, equivalente ao likwid-perfctr,
+    Basta rodar o script ./testes.sh. O script tem a opção -C, equivalente ao likwid-perfctr,
     que permite definir a thread do processador para rodar os testes. Por padrão, a thread sem
     indicar uma opção ao script é 3. Mais informações sobre os dados e os gráficos podem ser
     encontradas nos scripts auxiliares gera_dados.sh e plot_dados.gp
@@ -12,7 +12,8 @@ Como gerar os gráficos:
 
 Sobre os testes:
     Foram feitos usando dois processadores Intel Core (Coffeelake e Kabylake) com 4 núcleos e 8
-    threads. Os testes locais foram feitos usando a thread 7.
+    threads. Os testes locais foram feitos usando a thread 7. Os gráficos entregues com o trabalho
+    são referentes à execução no processador de arquitetura Kabylake.
 
 Otimizações encontradas em gaussJacobiOpt:
     - Alocação da matriz de coeficientes feita inline e com padding em potências de 2 para
